@@ -1,0 +1,52 @@
+{
+  "name": "microform",
+  "version": "0.1.0",
+  "description": "Headless form/field engine (solo lógica, sin estilos). Tipos + registry + Zod defaults + async + persistencia con adapters inyectables.",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./react": "./src/react.ts",
+    "./controls/rich-text": "./src/controls/rich-text.ts",
+    "./package.json": "./package.json"
+  },
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsdown src/index.ts --dts --format esm --out-dir dist",
+    "typecheck": "tsgo --noEmit",
+    "typecheck:react": "tsgo --noEmit -p tsconfig.react.json",
+    "typecheck:build": "tsgo --noEmit -p tsconfig.build.json",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage"
+  },
+  "peerDependencies": {
+    "react": "^19",
+    "react-hook-form": "^7",
+    "zod": "^4"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    },
+    "react-hook-form": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.5.4",
+    "@types/react": "19.2.3",
+    "@types/react-dom": "19.2.3",
+    "@typescript/native-preview": "7.0.0-dev.20260707.2",
+    "@vitest/coverage-v8": "^4.1.11",
+    "happy-dom": "^20.10.6",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "react-hook-form": "^7.81.0",
+    "tsdown": "^0.23.0",
+    "vitest": "^4.1.5",
+    "zod": "^4.3.6"
+  }
+}
