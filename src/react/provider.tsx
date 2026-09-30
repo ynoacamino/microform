@@ -1,6 +1,6 @@
 import type { ReactElement, ReactNode } from "react";
 import { createContext, useContext } from "react";
-import type { Microform } from "@/core/registry.ts";
+import type { Microform } from "../core/registry";
 
 const MicroformContext = createContext<Microform<string> | null>(null);
 

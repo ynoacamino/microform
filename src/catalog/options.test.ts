@@ -1,5 +1,5 @@
 import { describe, expectTypeOf, it } from "vitest";
-import type { CheckboxGroupOption, DrawerSelectOption, ModalPickerSettings, PersonOption } from "@/catalog/options.ts";
+import type { CheckboxGroupOption, DrawerSelectOption, ModalPickerSettings, PersonOption } from "./options";
 
 describe("options", () => {
   it("Drawer assignable to Person", () => {

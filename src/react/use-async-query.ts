@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import type { QueryResult, QuerySource } from "@/data/ports.ts";
+import type { QueryResult, QuerySource } from "../data/ports";
 
 export interface UseAsyncQueryArgs<TItem> {
   source: QuerySource<TItem>;

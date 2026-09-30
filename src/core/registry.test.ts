@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from "vitest";
-import type { FieldRendererFn } from "@/core/control.ts";
-import { defineControl } from "@/core/define-control.ts";
-import { createMicroform, resolveRenderer } from "@/core/registry.ts";
+import type { FieldRendererFn } from "./control";
+import { defineControl } from "./define-control";
+import { createMicroform, resolveRenderer } from "./registry";
 
 const TEXT_TYPE = "text" as const;
 interface TextFieldConfig {

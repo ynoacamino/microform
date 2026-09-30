@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { z } from "zod";
-import { buildEditDefaults } from "@/schema/edit-defaults.ts";
+import { buildEditDefaults } from "./edit-defaults";
 
 const editSchema = z.object({
   name: z.string(),

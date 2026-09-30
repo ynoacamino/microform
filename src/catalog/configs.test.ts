@@ -1,6 +1,6 @@
 import { describe, expect, expectTypeOf, it } from "vitest";
-import type { BuiltInType } from "@/catalog/configs.ts";
-import { BUILT_IN_TYPES } from "@/catalog/configs.ts";
+import type { BuiltInType } from "./configs";
+import { BUILT_IN_TYPES } from "./configs";
 
 describe("builtin-types", () => {
   it("includes text/async_select/checkbox_group and excludes rich_text", () => {

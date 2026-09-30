@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { extractItemsFromData } from "@/data/extract-items.ts";
+import { extractItemsFromData } from "./extract-items";
 
 describe("extractItemsFromData", () => {
   it("returns direct array", () => {

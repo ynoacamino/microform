@@ -1,5 +1,5 @@
-import type { FieldRendererFn } from "@/core/control.ts";
-import type { NotifyAdapter, StorageAdapter } from "@/data/ports.ts";
+import type { NotifyAdapter, StorageAdapter } from "../data/ports";
+import type { FieldRendererFn } from "./control";
 
 export interface Microform<TType extends string = string> {
   register: <T extends TType>(type: T, renderer: FieldRendererFn) => void;

@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from "vitest";
-import type { NotifyAdapter } from "@/data/ports.ts";
-import { formatMutationError, handleSubmitFlow } from "@/data/submit.ts";
+import type { NotifyAdapter } from "./ports";
+import { formatMutationError, handleSubmitFlow } from "./submit";
 
 function makeNotify(): NotifyAdapter & {
   successCalls: string[];

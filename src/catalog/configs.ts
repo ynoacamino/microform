@@ -1,12 +1,12 @@
+import type { AsyncConfig, FileLike } from "../core/control";
+import type { QuerySource } from "../data/ports";
 import type {
   CheckboxGroupOption,
   DrawerSelectOption,
   ModalPickerSettings,
   PersonOption,
   SelectOption,
-} from "@/catalog/options.ts";
-import type { AsyncConfig, FileLike } from "@/core/control.ts";
-import type { QuerySource } from "@/data/ports.ts";
+} from "./options";
 
 export type AsyncSource<T = unknown> = QuerySource<T> | AsyncConfig<T>;
 

@@ -35,7 +35,7 @@
         "useImportType": "error",
         "noRestrictedImports": {
           "level": "error",
-          "options": { "patterns": [{ "group": ["./**", "../**"] }] }
+          "options": { "patterns": [{ "group": ["@/**"] }] }
         }
       }
     }

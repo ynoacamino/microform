@@ -1,5 +1,5 @@
-import type { FieldStructure, FieldType } from "@/core/field.ts";
-import { isFieldRow } from "@/core/field.ts";
+import type { FieldStructure, FieldType } from "./field";
+import { isFieldRow } from "./field";
 
 export const MAX_COLUMNS = 12;
 

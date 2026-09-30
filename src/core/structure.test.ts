@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import type { FieldStructure } from "@/core/field.ts";
-import { flattenStructure, MAX_COLUMNS, validateColumns } from "@/core/structure.ts";
+import type { FieldStructure } from "./field";
+import { flattenStructure, MAX_COLUMNS, validateColumns } from "./structure";
 
 describe("validateColumns", () => {
   it("accepts boundaries 1 and 12", () => {

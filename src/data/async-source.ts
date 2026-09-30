@@ -1,5 +1,5 @@
-import { extractItemsFromData } from "@/data/extract-items.ts";
-import type { FetchArgs, QueryResult } from "@/data/ports.ts";
+import { extractItemsFromData } from "./extract-items";
+import type { FetchArgs, QueryResult } from "./ports";
 
 export interface AsyncSourceResult<T> {
   data: T;

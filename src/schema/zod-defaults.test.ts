@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { z } from "zod";
-import { buildRequiredMap, createFormDefaults, unwrapZodType } from "@/schema/zod-defaults.ts";
+import { buildRequiredMap, createFormDefaults, unwrapZodType } from "./zod-defaults";
 
 const schema = z.object({
   name: z.string(),

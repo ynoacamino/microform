@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
-import type { FieldStructure, FieldType } from "@/core/field.ts";
-import { isFieldRow } from "@/core/field.ts";
+import type { FieldStructure, FieldType } from "../core/field";
+import { isFieldRow } from "../core/field";
 
 export interface FieldGridProps<T extends string> {
   structure: FieldStructure<T>;

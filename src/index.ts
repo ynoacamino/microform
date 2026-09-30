@@ -1,4 +1,4 @@
-export { createMemoryStorage } from "@/adapters/memory-storage.ts";
+export { createMemoryStorage } from "./adapters/memory-storage";
 export type {
   AsyncSource,
   AvatarUploadConfig,
@@ -19,10 +19,10 @@ export type {
   TextareaConfig,
   TextConfig,
   UploadFileConfig,
-} from "@/catalog/configs.ts";
-export { BUILT_IN_TYPES } from "@/catalog/configs.ts";
-export type { EnumOption } from "@/catalog/enum-options.ts";
-export { createEnumOptions, getOptionLabel } from "@/catalog/enum-options.ts";
+} from "./catalog/configs";
+export { BUILT_IN_TYPES } from "./catalog/configs";
+export type { EnumOption } from "./catalog/enum-options";
+export { createEnumOptions, getOptionLabel } from "./catalog/enum-options";
 export type {
   AsyncCheckboxGroupData,
   BaseOption,
@@ -31,7 +31,7 @@ export type {
   ModalPickerSettings,
   PersonOption,
   SelectOption,
-} from "@/catalog/options.ts";
+} from "./catalog/options";
 export type {
   AsyncConfig,
   FieldControlDefinition,
@@ -39,22 +39,22 @@ export type {
   FieldRendererProps,
   FieldValue,
   FileLike,
-} from "@/core/control.ts";
-export { forwardScalarValue } from "@/core/control.ts";
-export type { ControlDefinition } from "@/core/define-control.ts";
-export { defineControl } from "@/core/define-control.ts";
-export type { BaseField, ControlFieldConfig, FieldRow, FieldStructure, FieldType } from "@/core/field.ts";
-export { isFieldRow } from "@/core/field.ts";
-export { inferInputValue } from "@/core/infer.ts";
-export type { Microform } from "@/core/registry.ts";
-export { createMicroform, resolveRenderer } from "@/core/registry.ts";
-export { flattenStructure, MAX_COLUMNS, validateColumns } from "@/core/structure.ts";
-export type { AsyncSourceResult, PromiseAsyncSource } from "@/data/async-source.ts";
-export { createAsyncSource } from "@/data/async-source.ts";
-export type { EmptyStrategy } from "@/data/clean.ts";
-export { cleanVars } from "@/data/clean.ts";
-export { extractItemsFromData } from "@/data/extract-items.ts";
-export { createPersistenceKey, readPersistedValue, writePersistedValue } from "@/data/persistence.ts";
+} from "./core/control";
+export { forwardScalarValue } from "./core/control";
+export type { ControlDefinition } from "./core/define-control";
+export { defineControl } from "./core/define-control";
+export type { BaseField, ControlFieldConfig, FieldRow, FieldStructure, FieldType } from "./core/field";
+export { isFieldRow } from "./core/field";
+export { inferInputValue } from "./core/infer";
+export type { Microform } from "./core/registry";
+export { createMicroform, resolveRenderer } from "./core/registry";
+export { flattenStructure, MAX_COLUMNS, validateColumns } from "./core/structure";
+export type { AsyncSourceResult, PromiseAsyncSource } from "./data/async-source";
+export { createAsyncSource } from "./data/async-source";
+export type { EmptyStrategy } from "./data/clean";
+export { cleanVars } from "./data/clean";
+export { extractItemsFromData } from "./data/extract-items";
+export { createPersistenceKey, readPersistedValue, writePersistedValue } from "./data/persistence";
 export type {
   FetchArgs,
   MutationPort,
@@ -62,10 +62,10 @@ export type {
   QueryResult,
   QuerySource,
   StorageAdapter,
-} from "@/data/ports.ts";
-export type { MutationErrorLike, SubmitFlowArgs } from "@/data/submit.ts";
-export { formatMutationError, handleSubmitFlow } from "@/data/submit.ts";
-export type { EditDefaultsOptions } from "@/schema/edit-defaults.ts";
-export { buildEditDefaults, extractIdsFromArray } from "@/schema/edit-defaults.ts";
-export type { ZodObjectSchema } from "@/schema/zod-defaults.ts";
-export { buildRequiredMap, createFormDefaults, unwrapZodType } from "@/schema/zod-defaults.ts";
+} from "./data/ports";
+export type { MutationErrorLike, SubmitFlowArgs } from "./data/submit";
+export { formatMutationError, handleSubmitFlow } from "./data/submit";
+export type { EditDefaultsOptions } from "./schema/edit-defaults";
+export { buildEditDefaults, extractIdsFromArray } from "./schema/edit-defaults";
+export type { ZodObjectSchema } from "./schema/zod-defaults";
+export { buildRequiredMap, createFormDefaults, unwrapZodType } from "./schema/zod-defaults";

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { inferInputValue } from "@/core/infer.ts";
+import { inferInputValue } from "./infer";
 
 describe("inferInputValue", () => {
   it("maps scalars and empties arrays/nullish", () => {

@@ -1,9 +1,9 @@
 import type { ReactNode } from "react";
-import type { FieldValue } from "@/core/control.ts";
-import { inferInputValue } from "@/core/infer.ts";
-import type { Microform } from "@/core/registry.ts";
-import { resolveRenderer } from "@/core/registry.ts";
-import { useMicroformOptional } from "@/react/provider.tsx";
+import type { FieldValue } from "../core/control";
+import { inferInputValue } from "../core/infer";
+import type { Microform } from "../core/registry";
+import { resolveRenderer } from "../core/registry";
+import { useMicroformOptional } from "./provider";
 
 export interface InferFieldInputProps {
   type: string;

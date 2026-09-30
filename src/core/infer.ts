@@ -1,4 +1,4 @@
-import type { FieldValue } from "@/core/control.ts";
+import type { FieldValue } from "./control";
 
 export function inferInputValue(value: FieldValue | unknown): string | undefined {
   if (value === null || value === undefined) return undefined;

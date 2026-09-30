@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { createEnumOptions, getOptionLabel } from "@/catalog/enum-options.ts";
+import { createEnumOptions, getOptionLabel } from "./enum-options";
 
 describe("createEnumOptions", () => {
   it("converts Record to options with lowercased key", () => {

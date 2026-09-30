@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { isFieldRow } from "@/core/field.ts";
+import { isFieldRow } from "./field";
 
 describe("isFieldRow", () => {
   it("distinguishes field vs row", () => {

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { cleanVars } from "@/data/clean.ts";
+import { cleanVars } from "./clean";
 
 describe("cleanVars omit (queries)", () => {
   it('"", whitespace-only strings → undefined', () => {

@@ -2,10 +2,10 @@ import type { ReactNode } from "react";
 import { useMemo } from "react";
 import type { Control, ControllerRenderProps, FieldPath, FieldValues } from "react-hook-form";
 import { Controller } from "react-hook-form";
-import type { FieldStructure, FieldType } from "@/core/field.ts";
-import { FieldGrid } from "@/react/field-grid.tsx";
-import type { ZodObjectSchema } from "@/schema/zod-defaults.ts";
-import { buildRequiredMap } from "@/schema/zod-defaults.ts";
+import type { FieldStructure, FieldType } from "../core/field";
+import type { ZodObjectSchema } from "../schema/zod-defaults";
+import { buildRequiredMap } from "../schema/zod-defaults";
+import { FieldGrid } from "./field-grid";
 
 export interface FormFieldsItemArgs<
   TFieldValues extends FieldValues = FieldValues,

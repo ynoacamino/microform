@@ -1,9 +1,9 @@
 import { useEffect, useRef } from "react";
 import type { Control, FieldPath, FieldValues } from "react-hook-form";
 import { useWatch } from "react-hook-form";
-import type { FieldValue } from "@/core/control.ts";
-import { readPersistedValue, writePersistedValue } from "@/data/persistence.ts";
-import type { StorageAdapter } from "@/data/ports.ts";
+import type { FieldValue } from "../core/control";
+import { readPersistedValue, writePersistedValue } from "../data/persistence";
+import type { StorageAdapter } from "../data/ports";
 
 export interface UsePersistenceArgs<TFieldValues extends FieldValues = FieldValues> {
   control: Control<TFieldValues>;

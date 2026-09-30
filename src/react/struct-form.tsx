@@ -1,9 +1,9 @@
 import type { ReactNode } from "react";
 import type { FieldPath, FieldValues, UseFormReturn } from "react-hook-form";
-import type { FieldStructure } from "@/core/field.ts";
-import type { FormFieldsProps } from "@/react/form-fields.tsx";
-import { FormFields } from "@/react/form-fields.tsx";
-import type { ZodObjectSchema } from "@/schema/zod-defaults.ts";
+import type { FieldStructure } from "../core/field";
+import type { ZodObjectSchema } from "../schema/zod-defaults";
+import type { FormFieldsProps } from "./form-fields";
+import { FormFields } from "./form-fields";
 
 export type StructFormSubmitMode = "button" | "auto";
 

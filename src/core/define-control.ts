@@ -1,4 +1,4 @@
-import type { FieldRendererFn } from "@/core/control.ts";
+import type { FieldRendererFn } from "./control";
 
 export interface ControlDefinition<
   Type extends string,

@@ -1,5 +1,5 @@
-import type { FieldValue } from "@/core/control.ts";
-import type { StorageAdapter } from "@/data/ports.ts";
+import type { FieldValue } from "../core/control";
+import type { StorageAdapter } from "./ports";
 
 const DEFAULT_PREFIX = "form-persist:";
 

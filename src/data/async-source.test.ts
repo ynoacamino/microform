@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { createAsyncSource } from "@/data/async-source.ts";
+import { createAsyncSource } from "./async-source";
 
 describe("createAsyncSource", () => {
   it("mapItem extracts items and total", async () => {

@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { inferInputValue } from "@/core/infer.ts";
-import { createMicroform, resolveRenderer } from "@/core/registry.ts";
+import { inferInputValue } from "../core/infer";
+import { createMicroform, resolveRenderer } from "../core/registry";
 
 describe("react binding: thin resolution", () => {
   it("resolves per instance, no global registry", () => {

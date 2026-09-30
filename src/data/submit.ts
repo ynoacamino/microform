@@ -1,5 +1,5 @@
-import { cleanVars } from "@/data/clean.ts";
-import type { MutationPort, NotifyAdapter } from "@/data/ports.ts";
+import { cleanVars } from "./clean";
+import type { MutationPort, NotifyAdapter } from "./ports";
 
 const FALLBACK_MESSAGE = "Ocurrió un error inesperado";
 

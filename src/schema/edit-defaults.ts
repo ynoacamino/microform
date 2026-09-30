@@ -1,5 +1,5 @@
 import type { z } from "zod";
-import { unwrapZodType } from "@/schema/zod-defaults.ts";
+import { unwrapZodType } from "./zod-defaults";
 
 function isEntityRef(value: unknown): value is { id: string } {
   return (

@@ -1,4 +1,4 @@
-import type { StorageAdapter } from "@/data/ports.ts";
+import type { StorageAdapter } from "../data/ports";
 
 export function createMemoryStorage(
   seed: Record<string, string> = {},

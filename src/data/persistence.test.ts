@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { createMemoryStorage } from "@/adapters/memory-storage.ts";
-import { createPersistenceKey, readPersistedValue, writePersistedValue } from "@/data/persistence.ts";
+import { createMemoryStorage } from "../adapters/memory-storage";
+import { createPersistenceKey, readPersistedValue, writePersistedValue } from "./persistence";
 
 describe("createPersistenceKey", () => {
   it("uses default prefix", () => {
