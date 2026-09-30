@@ -1,46 +1,28 @@
-// microform — núcleo headless (solo lógica, cero estilos).
-// Este barrel es la única API pública. No re-exporta UI.
-
-export { createMemoryStorage } from "./adapters/memory-storage.ts";
-export type { NotifyAdapter, StorageAdapter } from "./adapters/ports.ts";
-export type { BuiltInType } from "./controls/builtin-types.ts";
-export { BUILT_IN_TYPES } from "./controls/builtin-types.ts";
-export type { ControlDefinition } from "./controls/define-control.ts";
-export { defineControl } from "./controls/define-control.ts";
-export type { RichTextType } from "./controls/rich-text.ts";
-export { RICH_TEXT_TYPE } from "./controls/rich-text.ts";
-export { createAsyncConfig } from "./fields/create-async-config.ts";
-export { createPersistenceKey, readPersistedValue, writePersistedValue } from "./fields/persistence.ts";
-export { flattenStructure, MAX_COLUMNS, validateColumns } from "./fields/structure.ts";
-export { cleanFormVariables } from "./forms/clean-form-variables.ts";
-export type { ZodObjectSchema } from "./forms/form-defaults.ts";
-export {
-  buildEditDefaults,
-  buildRequiredMap,
-  createFormDefaults,
-  unwrapZodType,
-} from "./forms/form-defaults.ts";
-export type { MutationErrorLike, SubmitFlowArgs } from "./forms/submit.ts";
-export { formatMutationError, handleSubmitFlow } from "./forms/submit.ts";
-export type { AsyncQueryPort } from "./ports/async-query.ts";
-export type { ChromePort } from "./ports/chrome.ts";
-export type { ComponentPort } from "./ports/component.ts";
-export type { FormShellPort } from "./ports/form-shell.ts";
-export type { LayoutPort } from "./ports/layout.ts";
-export type { MutationPort } from "./ports/mutation.ts";
-export type { Registry } from "./registry/create-registry.ts";
-export { createRegistry } from "./registry/create-registry.ts";
-export type { Microform } from "./registry/microform.ts";
-export { createMicroform } from "./registry/microform.ts";
-export { resolveRenderer } from "./registry/resolve-renderer.ts";
-export { forwardScalarValue } from "./types/control.ts";
+export { createMemoryStorage } from "@/adapters/memory-storage.ts";
 export type {
-  BaseField,
-  ControlFieldConfig,
-  FieldRow,
-  FieldStructure,
-  FieldType,
-} from "./types/field.ts";
+  AsyncSource,
+  AvatarUploadConfig,
+  BuiltInType,
+  CalendarConfig,
+  CheckboxGroupConfig,
+  ComboboxConfig,
+  ControlConfig,
+  DrawerSelectConfig,
+  EmailConfig,
+  ModalPickerConfig,
+  NumberConfig,
+  PasswordConfig,
+  PersonSelectConfig,
+  RichTextConfig,
+  SearchConfig,
+  SelectConfig,
+  TextareaConfig,
+  TextConfig,
+  UploadFileConfig,
+} from "@/catalog/configs.ts";
+export { BUILT_IN_TYPES } from "@/catalog/configs.ts";
+export type { EnumOption } from "@/catalog/enum-options.ts";
+export { createEnumOptions, getOptionLabel } from "@/catalog/enum-options.ts";
 export type {
   AsyncCheckboxGroupData,
   BaseOption,
@@ -48,14 +30,42 @@ export type {
   DrawerSelectOption,
   ModalPickerSettings,
   PersonOption,
-} from "./types/options.ts";
+  SelectOption,
+} from "@/catalog/options.ts";
 export type {
-  ExtractQueryData,
-  ExtractQueryItem,
-  ExtractQueryVariables,
-} from "./types/query.ts";
-export { cleanVariables } from "./utils/clean-variables.ts";
-export type { SelectOption } from "./utils/create-enum-options.ts";
-export { createEnumOptions } from "./utils/create-enum-options.ts";
-export { extractItemsFromData } from "./utils/extract-items.ts";
-export { getOptionLabel } from "./utils/get-option-label.ts";
+  AsyncConfig,
+  FieldControlDefinition,
+  FieldRendererFn,
+  FieldRendererProps,
+  FieldValue,
+  FileLike,
+} from "@/core/control.ts";
+export { forwardScalarValue } from "@/core/control.ts";
+export type { ControlDefinition } from "@/core/define-control.ts";
+export { defineControl } from "@/core/define-control.ts";
+export type { BaseField, ControlFieldConfig, FieldRow, FieldStructure, FieldType } from "@/core/field.ts";
+export { isFieldRow } from "@/core/field.ts";
+export { inferInputValue } from "@/core/infer.ts";
+export type { Microform } from "@/core/registry.ts";
+export { createMicroform, resolveRenderer } from "@/core/registry.ts";
+export { flattenStructure, MAX_COLUMNS, validateColumns } from "@/core/structure.ts";
+export type { AsyncSourceResult, PromiseAsyncSource } from "@/data/async-source.ts";
+export { createAsyncSource } from "@/data/async-source.ts";
+export type { EmptyStrategy } from "@/data/clean.ts";
+export { cleanVars } from "@/data/clean.ts";
+export { extractItemsFromData } from "@/data/extract-items.ts";
+export { createPersistenceKey, readPersistedValue, writePersistedValue } from "@/data/persistence.ts";
+export type {
+  FetchArgs,
+  MutationPort,
+  NotifyAdapter,
+  QueryResult,
+  QuerySource,
+  StorageAdapter,
+} from "@/data/ports.ts";
+export type { MutationErrorLike, SubmitFlowArgs } from "@/data/submit.ts";
+export { formatMutationError, handleSubmitFlow } from "@/data/submit.ts";
+export type { EditDefaultsOptions } from "@/schema/edit-defaults.ts";
+export { buildEditDefaults, extractIdsFromArray } from "@/schema/edit-defaults.ts";
+export type { ZodObjectSchema } from "@/schema/zod-defaults.ts";
+export { buildRequiredMap, createFormDefaults, unwrapZodType } from "@/schema/zod-defaults.ts";

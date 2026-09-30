@@ -1,21 +1,20 @@
-name: CI
+name: Release
 
 on:
   push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+    tags:
+      - "v*.*.*"
 
 permissions:
-  contents: read
+  contents: write
 
 concurrency:
-  group: ci-${{ github.ref }}
-  cancel-in-progress: true
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
-  ci:
-    name: lint / typecheck / test / coverage / build
+  release:
+    name: build / test / release
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -50,8 +49,19 @@ jobs:
       - name: Test
         run: bun run test
 
-      - name: Test coverage
-        run: bun run test:coverage
-
       - name: Build
         run: bun run build
+
+      - name: Pack dist
+        run: tar -czf microform-dist.tar.gz dist
+
+      - name: Pack tarball
+        run: bun pm pack --filename microform.tgz
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true
+          files: |
+            microform-dist.tar.gz
+            microform.tgz

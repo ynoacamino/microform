@@ -1,6 +1,5 @@
-import type { StorageAdapter } from "./ports.ts";
+import type { StorageAdapter } from "@/data/ports.ts";
 
-/** Storage en memoria (tests, SSR, RN). */
 export function createMemoryStorage(
   seed: Record<string, string> = {},
 ): StorageAdapter & { dump: () => Record<string, string> } {

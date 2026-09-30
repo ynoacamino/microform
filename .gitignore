@@ -1,3 +1,6 @@
+# local extraction source (no commitear, pesa GBs)
+school-assistance/
+
 # dependencies (bun install)
 node_modules
 

@@ -1,9 +1,9 @@
 import type { ReactNode } from "react";
-import { inferInputValue } from "../fields/infer.ts";
-import type { Microform } from "../registry/microform.ts";
-import { resolveRenderer } from "../registry/resolve-renderer.ts";
-import type { FieldValue } from "../types/control.ts";
-import { useMicroformOptional } from "./context.tsx";
+import type { FieldValue } from "@/core/control.ts";
+import { inferInputValue } from "@/core/infer.ts";
+import type { Microform } from "@/core/registry.ts";
+import { resolveRenderer } from "@/core/registry.ts";
+import { useMicroformOptional } from "@/react/provider.tsx";
 
 export interface InferFieldInputProps {
   type: string;
@@ -13,16 +13,11 @@ export interface InferFieldInputProps {
   onBlur?: () => void;
   disabled?: boolean;
   name?: string;
-  /** Override por prop; si se omite se usa el contexto. */
   microform?: Microform<string>;
-  /** Config extra del campo que se reenvía al renderer como `props`. */
   fieldProps?: Record<string, unknown>;
+  onUnknownType?: (type: string) => ReactNode;
 }
 
-/**
- * Binding delgado: vía única `resolveRenderer`, sin switch por tipo,
- * sin registro top-level, sin UI. Desconocido → `null`.
- */
 export function InferFieldInput({
   type,
   value,
@@ -33,6 +28,7 @@ export function InferFieldInput({
   name,
   microform,
   fieldProps,
+  onUnknownType,
 }: InferFieldInputProps): ReactNode {
   const contextual = useMicroformOptional();
   const registry = microform ?? contextual;
@@ -40,7 +36,7 @@ export function InferFieldInput({
     throw new Error("InferFieldInput requiere <MicroformProvider> o prop `microform`.");
   }
   const renderer = resolveRenderer(registry, type);
-  if (!renderer) return null;
+  if (!renderer) return onUnknownType?.(type) ?? null;
   return renderer({
     props: { type, ...fieldProps },
     value,

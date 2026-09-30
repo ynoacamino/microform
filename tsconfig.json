@@ -1,11 +1,12 @@
 {
-  "include": ["src/**/*.ts", "vitest.config.ts", "tsdown.config.ts"],
-  "exclude": ["src/react.ts", "src/react/**", "src/**/*.test.tsx"],
+  "include": ["src/**/*.ts", "src/**/*.tsx", "vitest.config.ts", "tsdown.config.ts"],
   "compilerOptions": {
     "target": "ES2022",
     "module": "ESNext",
-    "lib": ["ES2022"],
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "jsx": "react-jsx",
     "moduleResolution": "bundler",
+    "paths": { "@/*": ["./src/*"] },
     "allowImportingTsExtensions": true,
     "verbatimModuleSyntax": true,
     "noEmit": true,

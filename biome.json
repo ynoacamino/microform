@@ -32,7 +32,11 @@
       "style": {
         "useConst": "error",
         "noNegationElse": "warn",
-        "useImportType": "error"
+        "useImportType": "error",
+        "noRestrictedImports": {
+          "level": "error",
+          "options": { "patterns": [{ "group": ["./**", "../**"] }] }
+        }
       }
     }
   },

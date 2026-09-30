@@ -7,14 +7,12 @@
   "exports": {
     ".": "./src/index.ts",
     "./react": "./src/react.ts",
-    "./controls/rich-text": "./src/controls/rich-text.ts",
     "./package.json": "./package.json"
   },
   "sideEffects": false,
   "scripts": {
     "build": "tsdown src/index.ts --dts --format esm --out-dir dist",
     "typecheck": "tsgo --noEmit",
-    "typecheck:react": "tsgo --noEmit -p tsconfig.react.json",
     "typecheck:build": "tsgo --noEmit -p tsconfig.build.json",
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
@@ -26,14 +24,6 @@
     "react": "^19",
     "react-hook-form": "^7",
     "zod": "^4"
-  },
-  "peerDependenciesMeta": {
-    "react": {
-      "optional": true
-    },
-    "react-hook-form": {
-      "optional": true
-    }
   },
   "devDependencies": {
     "@biomejs/biome": "2.5.4",

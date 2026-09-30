@@ -2,10 +2,10 @@ import type { ReactNode } from "react";
 import { useMemo } from "react";
 import type { Control, ControllerRenderProps, FieldPath, FieldValues } from "react-hook-form";
 import { Controller } from "react-hook-form";
-import type { ZodObjectSchema } from "../forms/form-defaults.ts";
-import { buildRequiredMap } from "../forms/form-defaults.ts";
-import type { FieldStructure, FieldType } from "../types/field.ts";
-import { FieldGrid } from "./field-grid.tsx";
+import type { FieldStructure, FieldType } from "@/core/field.ts";
+import { FieldGrid } from "@/react/field-grid.tsx";
+import type { ZodObjectSchema } from "@/schema/zod-defaults.ts";
+import { buildRequiredMap } from "@/schema/zod-defaults.ts";
 
 export interface FormFieldsItemArgs<
   TFieldValues extends FieldValues = FieldValues,
@@ -25,11 +25,6 @@ export interface FormFieldsProps<
   schema?: ZodObjectSchema;
 }
 
-/**
- * Itera la estructura con un `Controller` por campo y deriva `required`
- * del schema. El chrome visual (`InferItem`, labels, errores) lo provee
- * el adapter vía `renderItem`.
- */
 export function FormFields<
   TFieldValues extends FieldValues = FieldValues,
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,

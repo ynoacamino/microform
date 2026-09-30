@@ -1,19 +1,14 @@
 import type { ReactNode } from "react";
-import type { FieldStructure, FieldType } from "../types/field.ts";
-import { isFieldRow } from "../types/field.ts";
+import type { FieldStructure, FieldType } from "@/core/field.ts";
+import { isFieldRow } from "@/core/field.ts";
 
 export interface FieldGridProps<T extends string> {
   structure: FieldStructure<T>;
   renderField: (field: FieldType<T>) => ReactNode;
   alignItemsEnd?: boolean;
-  /** Slot de la última fila (p. ej. botón submit del adapter). */
   children?: ReactNode;
 }
 
-/**
- * Layout delgado headless: estructura + `data-*`, cero estilos.
- * El adapter mapea `data-columns`/`data-colspan` a su sistema visual.
- */
 export function FieldGrid<T extends string>({
   structure,
   renderField,

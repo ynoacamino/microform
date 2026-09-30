@@ -1,26 +1,20 @@
 import { describe, expect, it } from "vitest";
-import { inferInputValue } from "../fields/infer.ts";
-import { createMicroform } from "../registry/microform.ts";
-import { resolveRenderer } from "../registry/resolve-renderer.ts";
+import { inferInputValue } from "@/core/infer.ts";
+import { createMicroform, resolveRenderer } from "@/core/registry.ts";
 
-/**
- * Contrato del binding React sin DOM (entorno node): vía única de
- * resolución + fallback escalar. Los componentes (`InferFieldInput`,
- * `FieldGrid`, `StructForm`/`FormFields`) delegan en estas primitivas.
- */
-describe("react binding: resolución delgada", () => {
-  it("resuelve por instancia, sin registro global", () => {
+describe("react binding: thin resolution", () => {
+  it("resolves per instance, no global registry", () => {
     const renderer = (): string => "x";
     const micro = createMicroform({ controls: [{ type: "text", renderer }] });
     expect(resolveRenderer(micro, "text")).toBe(renderer);
   });
 
-  it("tipo desconocido (p. ej. rich-text en PWA) → undefined (InferField pinta null)", () => {
+  it("unknown type (e.g. rich-text) → undefined (InferField renders null)", () => {
     const micro = createMicroform<string>({ controls: [] });
     expect(resolveRenderer(micro, "rich-text")).toBeUndefined();
   });
 
-  it("override por instancia sin afectar a otras", () => {
+  it("per-instance override without affecting others", () => {
     const first = (): string => "a";
     const second = (): string => "b";
     const a = createMicroform({ controls: [{ type: "text", renderer: first }] });
@@ -30,7 +24,7 @@ describe("react binding: resolución delgada", () => {
     expect(resolveRenderer(b, "text")).toBe(second);
   });
 
-  it("inferInputValue: fallback escalar de InferFieldInput", () => {
+  it("inferInputValue: scalar fallback of InferFieldInput", () => {
     expect(inferInputValue("hola")).toBe("hola");
     expect(inferInputValue(42)).toBe("42");
     expect(inferInputValue(undefined)).toBeUndefined();
