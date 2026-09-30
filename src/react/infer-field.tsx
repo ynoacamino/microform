@@ -1,15 +1,17 @@
 import type { ReactNode } from "react";
-import type { FieldValue } from "../core/control";
 import { inferInputValue } from "../core/infer";
 import type { Microform } from "../core/registry";
 import { resolveRenderer } from "../core/registry";
 import { useMicroformOptional } from "./provider";
 
-export interface InferFieldInputProps {
+export interface InferFieldInputProps<
+  // biome-ignore lint/suspicious/noExplicitAny: value type depends on the injected control
+  Value = any,
+> {
   type: string;
-  value?: FieldValue;
+  value?: Value;
   inputValue?: string;
-  onChange?: (val: FieldValue) => void;
+  onChange?: (val: Value | undefined) => void;
   onBlur?: () => void;
   disabled?: boolean;
   name?: string;
@@ -18,7 +20,10 @@ export interface InferFieldInputProps {
   onUnknownType?: (type: string) => ReactNode;
 }
 
-export function InferFieldInput({
+export function InferFieldInput<
+  // biome-ignore lint/suspicious/noExplicitAny: value type depends on the injected control
+  Value = any,
+>({
   type,
   value,
   inputValue,
@@ -29,7 +34,7 @@ export function InferFieldInput({
   microform,
   fieldProps,
   onUnknownType,
-}: InferFieldInputProps): ReactNode {
+}: InferFieldInputProps<Value>): ReactNode {
   const contextual = useMicroformOptional();
   const registry = microform ?? contextual;
   if (!registry) {

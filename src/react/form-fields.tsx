@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { useMemo } from "react";
-import type { Control, ControllerRenderProps, FieldPath, FieldValues } from "react-hook-form";
+import type { Control, ControllerFieldState, ControllerRenderProps, FieldPath, FieldValues } from "react-hook-form";
 import { Controller } from "react-hook-form";
 import type { FieldStructure, FieldType } from "../core/field";
 import type { ZodObjectSchema } from "../schema/zod-defaults";
@@ -12,7 +12,9 @@ export interface FormFieldsItemArgs<
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
 > {
   rhf: ControllerRenderProps<TFieldValues, TName>;
+  fieldState: ControllerFieldState;
   required: boolean;
+  invalid: boolean;
 }
 
 export interface FormFieldsProps<
@@ -23,12 +25,13 @@ export interface FormFieldsProps<
   control: Control<TFieldValues>;
   renderItem: (field: FieldType<TName>, args: FormFieldsItemArgs<TFieldValues, TName>) => ReactNode;
   schema?: ZodObjectSchema;
+  disabled?: boolean;
 }
 
 export function FormFields<
   TFieldValues extends FieldValues = FieldValues,
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
->({ structure, control, renderItem, schema }: FormFieldsProps<TFieldValues, TName>): ReactNode {
+>({ structure, control, renderItem, schema, disabled }: FormFieldsProps<TFieldValues, TName>): ReactNode {
   const requiredMap = useMemo(() => (schema ? buildRequiredMap(schema) : undefined), [schema]);
   return (
     <FieldGrid
@@ -37,11 +40,14 @@ export function FormFields<
         <Controller
           control={control}
           name={item.name}
-          render={({ field }) => (
+          disabled={disabled}
+          render={({ field, fieldState }) => (
             <>
               {renderItem(item, {
                 rhf: field,
+                fieldState,
                 required: requiredMap?.get(item.name) ?? false,
+                invalid: fieldState.invalid,
               })}
             </>
           )}

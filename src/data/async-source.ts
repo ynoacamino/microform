@@ -1,5 +1,5 @@
 import { extractItemsFromData } from "./extract-items";
-import type { FetchArgs, QueryResult } from "./ports";
+import type { FetchArgs, QueryResult, QuerySource } from "./ports";
 
 export interface AsyncSourceResult<T> {
   data: T;
@@ -56,6 +56,22 @@ export function createAsyncSource(options: {
         }
       }
       return { data, totalItems };
+    },
+  };
+}
+
+/**
+ * Adapts a `PromiseAsyncSource<T[]>` (e.g. built with `createAsyncSource`
+ * + `mapItem`) to the canonical list-shaped `QuerySource<T>`.
+ * `pageSize`/`signal` from `FetchArgs` are forwarded to `fetch` when the
+ * underlying source accepts them; `createAsyncSource` fixes `pageSize` at
+ * creation time, so per-call `pageSize` is informational there.
+ */
+export function asQuerySource<T>(source: PromiseAsyncSource<T[]>): QuerySource<T> {
+  return {
+    fetch: async (args: FetchArgs): Promise<QueryResult<T>> => {
+      const res = await source.fetch(args.search ?? "", args.page ?? 1);
+      return { items: res.data, total: res.totalItems };
     },
   };
 }

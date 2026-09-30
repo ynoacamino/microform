@@ -1,20 +1,20 @@
-import type { NotifyAdapter, StorageAdapter } from "../data/ports";
 import type { FieldRendererFn } from "./control";
 
+// biome-ignore lint/suspicious/noExplicitAny: registry stores renderers with any Value per control
+export type AnyRenderer = FieldRendererFn<any, any, any>;
+
 export interface Microform<TType extends string = string> {
-  register: <T extends TType>(type: T, renderer: FieldRendererFn) => void;
-  registerAll: (renderers: Partial<Record<TType, FieldRendererFn>>) => void;
-  resolve: (type: TType) => FieldRendererFn | undefined;
+  register: <T extends TType>(type: T, renderer: AnyRenderer) => void;
+  registerAll: (renderers: Partial<Record<TType, AnyRenderer>>) => void;
+  resolve: (type: TType) => AnyRenderer | undefined;
   has: (type: TType) => boolean;
   types: () => TType[];
 }
 
 export function createMicroform<BuiltIn extends string, Custom extends string = never>(options: {
-  controls: ReadonlyArray<{ type: BuiltIn; renderer: FieldRendererFn }>;
-  storage?: StorageAdapter;
-  notify?: NotifyAdapter;
+  controls: ReadonlyArray<{ type: BuiltIn; renderer: AnyRenderer }>;
 }): Microform<BuiltIn | Custom> {
-  const map = new Map<BuiltIn | Custom, FieldRendererFn>();
+  const map = new Map<BuiltIn | Custom, AnyRenderer>();
 
   for (const control of options.controls) {
     map.set(control.type, control.renderer);
@@ -44,6 +44,6 @@ export function createMicroform<BuiltIn extends string, Custom extends string = 
 export function resolveRenderer<TType extends string>(
   microform: Pick<Microform<TType>, "resolve">,
   type: TType,
-): FieldRendererFn | undefined {
+): AnyRenderer | undefined {
   return microform.resolve(type);
 }

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { createAsyncSource } from "./async-source";
+import { asQuerySource, createAsyncSource } from "./async-source";
 
 describe("createAsyncSource", () => {
   it("mapItem extracts items and total", async () => {
@@ -58,5 +58,16 @@ describe("createAsyncSource", () => {
       mapItem: (item) => item,
     });
     expect((await b.fetch("", 1)).totalItems).toBe(6);
+  });
+
+  it("asQuerySource adapts to canonical {items,total}", async () => {
+    const inner = createAsyncSource({
+      fetch: async () => ({ items: [{ id: "1" }], total: 7 }),
+      mapItem: (item) => (item as { id: string }).id,
+    });
+    const source = asQuerySource(inner);
+    const out = await source.fetch({ search: "an", page: 2, pageSize: 50 });
+    expect(out.items).toEqual(["1"]);
+    expect(out.total).toBe(7);
   });
 });

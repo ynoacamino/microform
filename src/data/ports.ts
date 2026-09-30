@@ -17,6 +17,7 @@ export interface FetchArgs {
   search?: string;
   page?: number;
   pageSize?: number;
+  signal?: AbortSignal;
 }
 
 export interface QueryResult<TItem> {

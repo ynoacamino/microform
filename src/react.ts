@@ -9,5 +9,7 @@ export type { StructFormProps, StructFormSubmitMode } from "./react/struct-form"
 export { StructForm } from "./react/struct-form";
 export type { UseAsyncQueryArgs, UseAsyncQueryResult } from "./react/use-async-query";
 export { useAsyncQuery } from "./react/use-async-query";
+export type { UseInferItemArgs, UseInferItemResult } from "./react/use-infer-item";
+export { useInferItem } from "./react/use-infer-item";
 export type { UsePersistenceArgs } from "./react/use-persistence";
 export { usePersistence } from "./react/use-persistence";

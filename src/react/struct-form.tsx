@@ -18,6 +18,7 @@ export interface StructFormProps<
   onSubmit: (data: TFieldValues) => void | Promise<void>;
   submitMode?: StructFormSubmitMode;
   submitLabel?: string;
+  disabled?: boolean;
   children?: ReactNode;
 }
 
@@ -32,11 +33,18 @@ export function StructForm<
   onSubmit,
   submitMode = "button",
   submitLabel = "Guardar",
+  disabled,
   children,
 }: StructFormProps<TFieldValues, TName>): ReactNode {
   return (
     <form onSubmit={form.handleSubmit(onSubmit)}>
-      <FormFields structure={structure} control={form.control} renderItem={renderItem} schema={schema} />
+      <FormFields
+        structure={structure}
+        control={form.control}
+        renderItem={renderItem}
+        schema={schema}
+        disabled={disabled}
+      />
       {children}
       {submitMode === "button" ? <button type="submit">{submitLabel}</button> : null}
     </form>

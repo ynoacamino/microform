@@ -38,9 +38,10 @@ export function useAsyncQuery<TItem>({
     if (!enabled) return;
     const myGen = ++gen.current;
     setIsLoading(true);
+    const controller = new AbortController();
     const timer = setTimeout(() => {
       source
-        .fetch({ search, page, pageSize })
+        .fetch({ search, page, pageSize, signal: controller.signal })
         .then((res: QueryResult<TItem>) => {
           if (gen.current !== myGen) return;
           setData(res.items);
@@ -49,6 +50,7 @@ export function useAsyncQuery<TItem>({
         })
         .catch((err: unknown) => {
           if (gen.current !== myGen) return;
+          if (err instanceof DOMException && err.name === "AbortError") return;
           setError(err);
         })
         .finally(() => {
@@ -56,7 +58,10 @@ export function useAsyncQuery<TItem>({
           setIsLoading(false);
         });
     }, debounceMs);
-    return () => clearTimeout(timer);
+    return () => {
+      clearTimeout(timer);
+      controller.abort();
+    };
   }, [source, search, page, pageSize, debounceMs, enabled, nonce]);
 
   return { data, total, isLoading, error, refetch: () => setNonce((n) => n + 1) };
