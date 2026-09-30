@@ -1,7 +1,7 @@
 {
   "name": "microform",
   "version": "0.1.1",
-  "description": "Headless form/field engine (solo lógica, sin estilos). Tipos + registry + Zod defaults + async + persistencia con adapters inyectables.",
+  "description": "Headless form and field engine with typed registry, Zod defaults, async sources, and pluggable storage adapters.",
   "license": "MIT",
   "type": "module",
   "exports": {
